@@ -1,2 +1,32 @@
 # SQL_PROJECTS
 Contains all my SQL Projects
+<hr/> 
+1. PIZZA SALES:-
+
+https://github.com/user-attachments/assets/79d62221-44a9-4d5d-8ed3-2562c7e20293
+
+PROJECT OVERVIEW:-
+
+This project provides an in-depth analysis of pizza sales for a fictitious pizza store using SQL queries. It demonstrates how to derive critical business insights from transactional data related to orders, pizzas, and their categories. The purpose of this project is to analyze key metrics such as total revenue, popular pizza types, order trends, and category-based revenue distribution, enabling data-driven decision-making to improve sales strategies.
+
+Let us consider a Example:-
+
+-- Determine the top 3 most ordered pizza types based on revenue for each pizza category.
+
+select category, name, revenue
+from (
+    select pizza_types.category, pizza_types.name,
+           sum(order_details.quantity * pizzas.price) as revenue,
+           rank() over (partition by pizza_types.category order by sum(order_details.quantity * pizzas.price) desc) as rn
+    from pizza_types
+    join pizzas on pizza_types.pizza_type_id = pizzas.pizza_type_id
+    join order_details on order_details.pizza_id = pizzas.pizza_id
+    group by pizza_types.category, pizza_types.name
+) as ranked_sales
+where rn <= 3;
+
+This SQL query identifies the top 3 most ordered pizza types based on revenue within each pizza category. It uses window functions with rank() to partition the data by category, ordering by revenue in descending order. The query demonstrates efficient data grouping and ranking to derive valuable sales insights for category-wise pizza performance analysis.
+
+CONCLUSION:-
+
+This project showcases advanced SQL techniques applied to real-world business scenarios. It highlights the power of data-driven decision-making for sales analytics and offers a robust foundation for more complex analytical solutions in the future. The queries presented can be extended to generate dashboards or reports, offering valuable insights for business growth.
