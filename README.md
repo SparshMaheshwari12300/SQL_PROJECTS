@@ -29,4 +29,52 @@ This SQL query identifies the top 3 most ordered pizza types based on revenue wi
 
 CONCLUSION:-
 
-This project showcases advanced SQL techniques applied to real-world business scenarios. It highlights the power of data-driven decision-making for sales analytics and offers a robust foundation for more complex analytical solutions in the future. The queries presented can be extended to generate dashboards or reports, offering valuable insights for business growth.
+This project showcases advanced SQL techniques applied to real-world business scenarios. It highlights the power of data-driven decision-making for sales analytics and offers a robust foundation for more complex
+analytical solutions in the future. The queries presented can be extended to generate dashboards or reports, offering valuable insights for business growth.
+
+
+<hr/> 
+2. NETFLIX ANALYSIS:-
+
+https://github.com/user-attachments/assets/4c3498b3-63fd-49cd-8526-b29caeff0f91
+
+PROJECT OVERVIEW:-
+
+This project analyzes Netflix content using PostgreSQL. The dataset includes movies and TV shows with attributes like title, director, cast, country, release year, duration, and more. The analysis covers various business insights, such as content distribution, most common ratings, top countries with the most content, and trends over the years. The goal is to derive meaningful insights from the dataset to understand Netflix's content trends better.
+
+Let us consider a Example:-
+
+-- Find the Most Common Rating for Movies and TV Shows
+
+SELECT
+    type,
+    rating
+FROM
+    (SELECT type, rating, count(*), rank() OVER (PARTITION BY type ORDER BY count(*) DESC)
+    AS ranking FROM netflix GROUP BY 1, 2)
+AS t1 WHERE ranking = 1;
+
+1.The query finds the most common rating for Movies and TV Shows.
+
+2.It first groups the dataset by type (Movie/TV Show) and rating, counting occurrences.
+
+3.The RANK() function assigns a ranking based on the highest count within each type.
+
+4.The outer query filters for the most common rating (ranking = 1).
+
+CONCLUSION:-
+
+1.The Netflix dataset provides valuable insights into content distribution across different categories. The analysis highlights:
+
+2.The number of Movies vs. TV Shows.
+
+3.Most common ratings for content.
+
+4.Top content-producing countries.
+
+5.The longest movie and TV shows with more than 5 seasons.
+
+6.Trends in content addition over the years.
+
+This project helps in understanding Netflix's content strategy, identifying popular genres, and assessing the influence of directors and actors in different regions.
+
