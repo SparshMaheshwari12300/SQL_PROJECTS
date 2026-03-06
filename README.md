@@ -64,6 +64,10 @@ AS t1 WHERE ranking = 1;
 
 4.The outer query filters for the most common rating (ranking = 1).
 
+
+Datasets:- https://drive.google.com/file/d/17oGULf1tKbmLuTCotQU8fhu6ZF77EQf-/view?usp=drivesdk
+
+
 CONCLUSION:-
 
 1.The Netflix dataset provides valuable insights into content distribution across different categories. The analysis highlights:
