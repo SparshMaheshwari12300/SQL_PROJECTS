@@ -27,6 +27,8 @@ where rn <= 3;
 
 This SQL query identifies the top 3 most ordered pizza types based on revenue within each pizza category. It uses window functions with rank() to partition the data by category, ordering by revenue in descending order. The query demonstrates efficient data grouping and ranking to derive valuable sales insights for category-wise pizza performance analysis.
 
+Datasets- https://drive.google.com/drive/u/0/folders/1YarevEDGlGKal4-r7CvkTuOhsRiRmk8h
+
 CONCLUSION:-
 
 This project showcases advanced SQL techniques applied to real-world business scenarios. It highlights the power of data-driven decision-making for sales analytics and offers a robust foundation for more complex
